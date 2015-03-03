@@ -1,0 +1,9 @@
+.btn{background:rgb(78,159,216) !important;color:#fff;border:1px solid;width:150px;padding:5px;border-radius: :5px;cursor:pointer}
+.verification_list{text-transform: uppercase;font-size:13px;padding:5px 22px;}
+.description{text-transform: uppercase;;font-size:18px !important;text-align:Center}
+ol{margin : 0px 20px;padding:3px 24px;}
+ol li{padding:4px;}
+.required{color:Red;}
+.err{color:Red;}
+.title{width:250px;}
+.ui-widget-content{background:#fff !important;}
