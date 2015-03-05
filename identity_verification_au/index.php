@@ -162,7 +162,7 @@
 	function verify_identity_details(){
 		global $wpdb;
 
-		$auth_url='http://staging-api.identityverification.com/get_verified/get_auth_token/';
+		$auth_url='https://api.identityverification.com/get_verified/get_auth_token/';
 		// Get the Table Data which should be displayed as form
 		$api_credentials=$wpdb->get_results("select * from ".$wpdb->prefix."identity_verification_auth");
 
@@ -170,7 +170,7 @@
 		$config_credentails['client_secret']=$api_credentials[0]->client_secret;
 		$response=sendPostData_api($auth_url,json_encode($config_credentails));
 		
-		$identity_verify_url='http://staging-api.identityverification.com/get_verified/identity/';
+		$identity_verify_url='https://api.identityverification.com/get_verified/identity/';
 		$_POST['auth_token']=$response->auth_token;
 		$identity_response=sendPostData_api($identity_verify_url,json_encode($_POST));
 		$site_url=site_url();

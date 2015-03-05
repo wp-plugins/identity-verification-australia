@@ -220,7 +220,7 @@ $(".identity_type").change(function(){
       $(".loader_image").css("display","block");
       $(".row-fluid").css("opacity",'0.5');
       $.ajax({
-          url:'http://localhost/staging_identityverification/wp-admin/admin-ajax.php?action=verify_identity',
+          url:'https://identityverification.com/wp-admin/admin-ajax.php?action=verify_identity',
           type:'post',
           data:postdata,
           success:function(result){

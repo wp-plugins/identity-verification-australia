@@ -7,7 +7,7 @@ Stable tag: 1.0
 
 == Description ==
 
-Plugin to Verify Identity Verificaion for Australia Using Driving License/Passport.
+Plugin to Verify Identity Verification for Australia Using Driving License/Passport.
 
 = Features =
 
