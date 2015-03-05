@@ -1,6 +1,6 @@
 === Identity Verification Australia ===
-Contributors: didier, identityverification
-Tags: Identity Verification,Verification,Australia,Identity,Identity Verification Australia
+Contributors: PluginTeam, identityverification
+Tags: Identity Verification,Verification,Australia,Identity,Driver Licence, Passport,Identity Verification Australia
 Requires at least: 3.9
 Tested up to: 4.2-alpha
 Stable tag: 1.0
@@ -11,7 +11,7 @@ Plugin to Verify Identity Verificaion for Australia Using Driving License/Passpo
 
 = Features =
 
-Identity Verification of a user from Australia can be done easily by providing your Client Id and Client Secret.
+Identity Verification for an Australian Citizen can be done easily by providing your Identityverification(IVS) API credentials.
 
 == Installation ==
 
@@ -22,20 +22,34 @@ Upload the zip folder of plugin through Admin Panel
 Unzip the folder and place plugin files in /wp-content/plugins/
 
 
-
+== Screenshots ==
+1. Here you can configure you API Credentials
+2. Here you will get Short Code
 
 == How to Use ==
 
 After Activation of the plugin you will get a tab in Left Side of Panel of Admin  as Identity Verification - AU.
 
-When you visit that page you will have form to provide you Client Id and Client Secret.
+When you visit that page you will have form to provide you need to provide Folllowing Configurations
+
+1. Client Id
+2. Client Secret
+3. Redirect URL
+4. Error URL
+
+Process to get API Credentials (client id & client secret)
+
+Visit :  https://identityverification.com/product/identity-verification-australia/
+
+Once Configuration done you will get a short code
 
 Use the Short code to get the form in any of the page which can be accessed by a normal User.
 
-Place the thankyou.php in your theme folder
+
+
 
 
 == Short Codes ==
 
 Until API Credentials i.e Client Id and Client Secret Provided you will not get the Short Code.
- Short COde : [IVS_IDENTITY_AU] 
+Short COde : [IVS_IDENTITY_AU] 

@@ -2,7 +2,7 @@
 	/**
 	* Plugin Name: Identity Verification - AU
 	* Description: Plugin to Verify Identity Verificaion for Australia Using Driving License/Passport
-	* Author: Identityverification.com
+	* Author: Plugin Team
 	* Version:1.0
 	* Author URI: http://identityverification.com
 	* 
@@ -56,7 +56,7 @@
 	        }
 	    }
 
-    
+    	
 	}
 	
 	
@@ -98,7 +98,8 @@
 			//echo "<pre>";print_r($table_fields);
 			//  Moving the First Array Element to an array
 			//$setting_id=array_shift($table_fields);
-
+ //echo plugins_url('thankyou.php', __FILE__);
+ //echo get_template_directory().'/thankyou.php';
 		include("verification_form.php");
 	}
 
@@ -151,60 +152,37 @@
 		include("information_form.php");
 		
 
-		// Posting Data to Api Call
-
-		if($_POST){
-			
-		//	$_POST['auth_token']=base64_decode($_POST['auth_token']);
-			$url='http://staging-api.identityverification.com/get_verified/get_auth_token ';
-			$client_config['client_id']=$_POST['client_id'];
-			$client_config['client_secret']=$_POST['client_secret'];
-			$result=sendPostData_api($url,json_encode($client_config));
-			// Check whether Passport Selected or Driving Licence Selected
-
-			$url='http://staging-api.identityverification.com/get_verified/identity ';
-			$config_details_array=array(
-					'auth_token'=>$result->auth_token,
-					'identity_type'=>$_POST['identity_type'],
-					'first_name'=>$_POST['first_name'],
-					'last_name'=>$_POST['last_name'],
-					'date_of_birth'=>$_POST['date_of_birth'],
-					'country'=>$_POST['country'],
-				);
-			if($_POST['identity_type']=='driver_license'){
-
-				$config_details_array['driver_license_number']=$_POST['driver_license_number'];
-				$config_details_array['driver_license_state']=$_POST['driver_license_state'];
-				$config_details_array['rta_card_number']=$_POST['rta_card_number'];
-				$config_details_array['date_of_expiry']=$_POST['date_of_expiry'];
-			}
-			if($_POST['identity_type']=='passport'){
-				$config_details_array['passport_number']=$_POST['passport_number'];
-				$config_details_array['passport_placeof_birth']=$_POST['passport_placeof_birth'];
-				$config_details_array['passport_birth_country_name']=$_POST['passport_birth_country_name'];
-				$config_details_array['surname_atbirth']=$_POST['surname_atbirth'];
-				$config_details_array['firstname_atcitizenship']=$_POST['firstname_atcitizenship'];
-				$config_details_array['surname_atcitizenship']=$_POST['surname_atcitizenship'];
-			}
-
-			
-			$config_details=json_encode($config_details_array);
-			$result=sendPostData_api($url,$config_details);
-			$_SESSION['identity']=$_POST['identity_type'];
-			$_SESSION['response']=json_encode($result);
-			$_SESSION['redirect_url']=$_POST['redirect_url'];
-			
-			$_SESSION['error_url']=$_POST['error_url'];
-	//echo "<pre>";print_r($result);
-	//exit;
-			wp_redirect(site_url()."/identity-verification-response");
-			
-			
-		}
+		
 	}	
 
 
-	
+	add_action("wp_ajax_verify_identity",'verify_identity_details');
+	add_action("wp_ajax_nopriv_verify_identity",'verify_identity_details');
+
+	function verify_identity_details(){
+		global $wpdb;
+
+		$auth_url='http://staging-api.identityverification.com/get_verified/get_auth_token/';
+		// Get the Table Data which should be displayed as form
+		$api_credentials=$wpdb->get_results("select * from ".$wpdb->prefix."identity_verification_auth");
+
+		$config_credentails['client_id']=$api_credentials[0]->client_id;
+		$config_credentails['client_secret']=$api_credentials[0]->client_secret;
+		$response=sendPostData_api($auth_url,json_encode($config_credentails));
+		
+		$identity_verify_url='http://staging-api.identityverification.com/get_verified/identity/';
+		$_POST['auth_token']=$response->auth_token;
+		$identity_response=sendPostData_api($identity_verify_url,json_encode($_POST));
+		$site_url=site_url();
+		$redirect_url=$api_credentials[0]->redirect_url;
+		$error_url=$api_credentials[0]->error_url;
+		include("thankyou.php");
+		exit;
+	}
+
+
+	// Style Sheets
+
 	add_action('wp_enqueue_scripts', 'fwds_styles');
 	function fwds_styles() {
 		//%%KEEPWHITESPACE%%&gt;  
@@ -214,8 +192,17 @@
 		wp_enqueue_style('date_picker');
 	}
 
+	
+	// Admin Styles
+
 	add_action('admin_enqueue_scripts', 'fwds_styles');
+
+
+
+	// Javascript and Jquery Libraries 
 	add_action('wp_enqueue_scripts', 'fwds_scripts');
+
+
 	function fwds_scripts() {
 		wp_enqueue_script('jquery');
 
@@ -235,3 +222,4 @@
 	}
 
 	add_shortcode( 'IVS_IDENTITY_AU', 'identityInfoForm' );
+
