@@ -1,7 +1,7 @@
 <?php
 	/**
 	* Plugin Name: Identity Verification - AU
-	* Description: Plugin to verify Australian users identity with their driver licence or passport. The verification is made instantly online and revert a response within seconds. No needs of complex installation, simply download and activate the plugin and you are good to start verifying users identity. Ideal for KYC and AML user registration.
+	* Description:  Plugin to instantly verify Australian users identity with their driver licence or passport. Ideal for membership website or application forms.
 	* Author: Plugin Team
 	* Version:1.0
 	* Author URI: http://identityverification.com
