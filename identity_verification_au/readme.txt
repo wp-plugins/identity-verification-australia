@@ -7,7 +7,7 @@ Stable tag: 1.0
 
 == Description ==
 
-Plugin to Verify Identity Verification for Australia Using Driving License/Passport.
+Plugin to verify Australian users identity with their driver licence or passport. The verification is made instantly online and revert a response within seconds. No needs of complex installation, simply download and activate the plugin and you are good to start verifying users identity. Ideal for KYC and AML user registration.
 
 = Features =
 
