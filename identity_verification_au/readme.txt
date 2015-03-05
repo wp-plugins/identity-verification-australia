@@ -17,7 +17,11 @@ This process is live and you will get a response within a few second
 
 = Features =
 
-Identity Verification for an Australian Citizen can be done easily by providing your Identityverification(IVS) API credentials.
+Identity Verification Services (IVS) gives you access to the widest and most current range of identity datasets that are currently available in the market. Our data checks fall into three distinct data set types to ensure you have the widest possible view of an individual, so you can sign-up customers in Australia and New Zealand with even greater business confidence.
+
+IVS VERIFICATION ENGINE – A FLEXIBLE SOLUTION
+
+Wherever you operate, or whatever the size and structure of your business, the IVS platform is a compliant solution that can help you to verify the authenticity of citizens. Our flexible application can be mapped to reflect your own risk-based approach to ID verification. You can select the ID checks that are relevant for your business, helping you to more effectively mitigate risk and sign-up customers with even greater business confidence.
 
 == Installation ==
 
