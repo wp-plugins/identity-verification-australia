@@ -1,13 +1,19 @@
 === KYC and AML User Identity Verification for Australia ===
 Contributors: PluginTeam, identityverification
-Tags: Identity Verification,Verification,Australia,Identity,Driver Licence, Passport,Identity Verification Australia
+Tags: Identity Verification,Verification,Australia,Identity,Driver Licence, Passport,Identity Verification Australia,KYC, AML, users, form, registration, authentication, security
 Requires at least: 3.9
 Tested up to: 4.2-alpha
 Stable tag: 1.0
 
 == Description ==
 
-Plugin to verify Australian users identity with their driver licence or passport. The verification is made instantly online and revert a response within seconds. No needs of complex installation, simply download and activate the plugin and you are good to start verifying users identity. Ideal for KYC and AML user registration.
+With this Plugin you will identify an individual though the submission of document details from:
+
+1.Driver License
+2.Passport
+
+Once the information is received the data is instantly submitted to the local authorities databases to verify the integrity of the information.
+This process is live and you will get a response within a few second
 
 = Features =
 
