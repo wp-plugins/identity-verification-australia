@@ -7,10 +7,7 @@ Stable tag: 1.0
 
 == Description ==
 
-With this Plugin you will identify an individual though the submission of document details from:
-
-1.Driver License
-2.Passport
+With this Plugin you will identify an individual though the submission of document details from an Australian Driver Licence or an Australia Passport
 
 Once the information is received the data is instantly submitted to the local authorities databases to verify the integrity of the information.
 This process is live and you will get a response within a few second
