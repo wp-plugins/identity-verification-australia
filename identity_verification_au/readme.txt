@@ -1,4 +1,4 @@
-=== Identity Verification Australia ===
+=== KYC and AML User Identity Verification for Australia ===
 Contributors: PluginTeam, identityverification
 Tags: Identity Verification,Verification,Australia,Identity,Driver Licence, Passport,Identity Verification Australia
 Requires at least: 3.9
