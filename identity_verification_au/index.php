@@ -1,7 +1,7 @@
 <?php
 	/**
 	* Plugin Name: Identity Verification - AU
-	* Description: Plugin to Verify Identity Verificaion for Australia Using Driving License/Passport
+	* Description: Plugin to Verify Identity Verification for Australia Using Driving License/Passport
 	* Author: Plugin Team
 	* Version:1.0
 	* Author URI: http://identityverification.com
