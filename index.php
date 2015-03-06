@@ -30,7 +30,6 @@
 		      driver_license_state VARCHAR(100),
 		      rta_card_number VARCHAR(100),
 		      date_of_expiry varchar(50)
-
 		    );";
 		    //reference to upgrade.php file
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
