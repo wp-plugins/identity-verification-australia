@@ -25,7 +25,7 @@ $(".identity_type").change(function(){
         var regex_dl_no=/^[A-Za-z0-9]+$/;
         var postdata='';
         var dob= $(".day").val()+"-"+$(".month").val()+"-"+$(".year").val();
-        var eod= $(".eday").val()+"-"+$(".emonth").val()+"-"+$(".eyear").val();
+        var eod='';
         if($("#first_name").val()==''){
           $(".err_fname").text("Please Enter Your Name");
           $("#first_name").focus();
@@ -121,6 +121,8 @@ $(".identity_type").change(function(){
               $(".err_eod").text("Please Select Your Date of Birth");
               
               return false;
+            }else{
+              var eod= $(".eday").val()+"-"+$(".emonth").val()+"-"+$(".eyear").val();
             }
         }
          postdata="first_name="+$("#first_name").val()+"&last_name="+$("#last_name").val()+"&date_of_birth="+dob+"&country="+$("#country").val()+"&driver_license_number="+$("#driving_license").val()+"&driver_license_state="+$("#dl_state").val()+"&rta_card_number="+$("#rta").val()+"&date_of_expiry="+eod+"&identity_type=driver_license";
