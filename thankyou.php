@@ -35,27 +35,27 @@ $table_name = $wpdb->prefix . "identity_verification_auth";
 
 						<td>Identity Type</td>
 						<td><?php echo ucwords(str_replace("_"," ",$response->identity_type))?></td>
-						<td><?php echo ($response->is_identity_validated==1?'<img src="'.$site_url.'/wp-content/plugins/identity_verification_au/images/icons/tick_105.png">':'Not Verified')?></td>
+						<td><?php echo ($response->is_identity_validated==1?'<img src="'.$site_url.'/wp-content/plugins/identity-verification-australia/images/icons/tick_105.png">':'Not Verified')?></td>
 					</tr>
 					<tr>
 						<td>Country</td>
 						<td><?php echo ucfirst($response->country)?></td>
-						<td><?php echo ($response->is_country_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity_verification_au/images/icons/tick_105.png">':'Not Verified')?></td>
+						<td><?php echo ($response->is_country_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity-verification-australia/images/icons/tick_105.png">':'Not Verified')?></td>
 					</tr>
 					<tr>
 						<td>First Name</td>
 						<td><?php echo $response->first_name?></td>
-						<td><?php echo ($response->is_first_name_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity_verification_au/images/icons/tick_105.png">':'Not Verified')?></td>
+						<td><?php echo ($response->is_first_name_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity-verification-australia/images/icons/tick_105.png">':'Not Verified')?></td>
 					</tr>
 					<tr>
 						<td>Family Name</td>
 						<td><?php echo $response->last_name?></td>
-						<td><?php echo ($response->is_last_name_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity_verification_au/images/icons/tick_105.png">':'Not Verified')?></td>
+						<td><?php echo ($response->is_last_name_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity-verification-australia/images/icons/tick_105.png">':'Not Verified')?></td>
 					</tr>
 					<tr>
 						<td>Date of Birth</td>
 						<td><?php echo $response->date_of_birth?></td>
-						<td><?php echo ($response->is_date_of_birth_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity_verification_au/images/icons/tick_105.png">':'Not Verified')?></td>
+						<td><?php echo ($response->is_date_of_birth_verified==1?'<img src="'.$site_url.'/wp-content/plugins/identity-verification-australia/images/icons/tick_105.png">':'Not Verified')?></td>
 					</tr>
 					<!-- <tr>
 						<td>Verification Status</td>

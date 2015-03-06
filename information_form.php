@@ -1,4 +1,4 @@
-<img src="<?php echo site_url()?>/wp-content/plugins/identity_verification_au/images/loader.gif" style="display:none" class="loader_image">
+<img src="<?php echo plugins_url()?>/identity-verification-australia/images/loader.gif" style="display:none" class="loader_image">
 <?php
 if(count($table_fields)>0){
 ?>
