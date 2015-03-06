@@ -3,8 +3,8 @@
 	* Plugin Name: Identity Verification - AU
 	* Description:  Plugin to instantly verify Australian users identity with their driver licence or passport. Ideal for membership website or application forms.
 	* Author: Identity Verification Services
-	* Version:1.0
-	* Author URI: https://profiles.wordpress.org/pluginteam
+	* Version:2.0
+	* Author URI: https://wordpress.org/plugins/identity-verification-australia/developers/
 	* 
 	*/
 // Plugin Activation Code
