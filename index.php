@@ -29,7 +29,9 @@
 		      driver_license_number VARCHAR(100),
 		      driver_license_state VARCHAR(100),
 		      rta_card_number VARCHAR(100),
-		      date_of_expiry varchar(50)
+		      date_of_expiry varchar(50),
+		      is_verified VARCHAR(10),
+		      updated_date VARCHAR(50)
 		    );";
 		    //reference to upgrade.php file
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -181,7 +183,8 @@
 					'first_name'=>$identity_response->first_name,
 					'last_name'=>$identity_response->last_name,
 					'date_of_birth'=>$identity_response->date_of_birth,
-					'is_verified'=>$identity_response->is_identity_validated
+					'is_verified'=>($identity_response->is_identity_validated==1?'1':0),
+					'updated_date'=>date("Y-m-d H:i:s")
 			);
 			$wpdb->insert('IDV_verified_users',$store_user);
 		
