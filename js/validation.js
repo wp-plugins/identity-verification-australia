@@ -1,10 +1,13 @@
 $(document).ready(function(){
 
   
-  var pathArray = window.location.pathname.split( '/' );
-  var secondLevelLocation = pathArray[1];
-
-  var site_url='http://'+window.location.hostname
+ var fullpath=window.location.href;
+  var split_path=fullpath.split("/");
+  if(split_path[4]==''){
+    var site_url='http://'+window.location.hostname;
+}else{
+var site_url='http://'+window.location.hostname+"/"+split_path[3];
+}
   
 $(".identity_type").change(function(){
       if($(this).val()=='driver_license'){
