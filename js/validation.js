@@ -5,7 +5,7 @@ $(document).ready(function(){
   var secondLevelLocation = pathArray[1];
 
   var site_url='http://'+window.location.hostname+"/"+secondLevelLocation;
-  alert(site_url);
+  
 $(".identity_type").change(function(){
       if($(this).val()=='driver_license'){
         $(".dl_info").css("display","block");
