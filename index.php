@@ -35,28 +35,24 @@
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		    dbDelta( $sql );
 		}
-		 $new_page_title = 'Identity Verification Response';
-	    $new_page_content = 'Identity Verification Response';
-	    $new_page_template = 'thankyou.php'; //ex. template-custom.php. Leave blank if you don't want a custom page template.
-
-	    //don't change the code bellow, unless you know what you're doing
-
-	    $page_check = get_page_by_title($new_page_title);
-	    $new_page = array(
-	        'post_type' => 'page',
-	        'post_title' => $new_page_title,
-	        'post_content' => $new_page_content,
-	        'post_status' => 'publish',
-	        'post_author' => 1,
-	    );
-	    if(!isset($page_check->ID)){
-	        $new_page_id = wp_insert_post($new_page);
-	        if(isset($new_page_template)){
-	            update_post_meta($new_page_id, '_wp_page_template', $new_page_template);
-	        }
-	    }
-
-    	
+		$verified_users = "IDV_verified_users";
+		if($wpdb->get_var("SHOW TABLES LIKE '$verified_users'") != $verified_users) {
+		     $verified_users_sql = "CREATE TABLE $verified_users (
+		      verification_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		      identity_type VARCHAR(50),
+		      first_name VARCHAR(50),
+		      last_name VARCHAR(50),
+		      date_of_birth VARCHAR(50),
+		      country VARCHAR(50),
+		      driver_license_number VARCHAR(100),
+		      driver_license_state VARCHAR(100),
+		      rta_card_number VARCHAR(100),
+		      date_of_expiry varchar(50)
+		    );";
+		    //reference to upgrade.php file
+		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		    dbDelta( $verified_users_sql );
+		}
 	}
 	
 	
@@ -162,7 +158,7 @@
 	function verify_identity_details(){
 		global $wpdb;
 
-		$auth_url='https://api.identityverification.com/get_verified/get_auth_token/';
+		$auth_url='http://staging-api.identityverification.com/get_verified/get_auth_token/';
 		// Get the Table Data which should be displayed as form
 		$api_credentials=$wpdb->get_results("select * from ".$wpdb->prefix."identity_verification_auth");
 
@@ -170,12 +166,23 @@
 		$config_credentails['client_secret']=$api_credentials[0]->client_secret;
 		$response=sendPostData_api($auth_url,json_encode($config_credentails));
 		
-		$identity_verify_url='https://api.identityverification.com/get_verified/identity/';
+		$identity_verify_url='http://staging-api.identityverification.com/get_verified/identity/';
 		$_POST['auth_token']=$response->auth_token;
 		$identity_response=sendPostData_api($identity_verify_url,json_encode($_POST));
 		$site_url=site_url();
 		$redirect_url=$api_credentials[0]->redirect_url;
 		$error_url=$api_credentials[0]->error_url;
+		
+		if($identity_response->is_identity_validated==1){
+			$store_user=array(
+					'identity_type'=>$identity_response->identity_type,
+					'country'=>$identity_response->country,
+					'first_name'=>$identity_response->first_name,
+					'last_name'=>$identity_response->last_name,
+					'date_of_birth'=>$identity_response->date_of_birth
+			);
+			$wpdb->insert('IDV_verified_users',$store_user);
+		}
 		include("thankyou.php");
 		exit;
 	}
