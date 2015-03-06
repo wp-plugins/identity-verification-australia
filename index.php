@@ -47,7 +47,8 @@
 		      driver_license_number VARCHAR(100),
 		      driver_license_state VARCHAR(100),
 		      rta_card_number VARCHAR(100),
-		      date_of_expiry varchar(50)
+		      date_of_expiry varchar(50),
+		      is_verified varchar(50)
 		    );";
 		    //reference to upgrade.php file
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -173,16 +174,17 @@
 		$redirect_url=$api_credentials[0]->redirect_url;
 		$error_url=$api_credentials[0]->error_url;
 		
-		if($identity_response->is_identity_validated==1){
+		
 			$store_user=array(
 					'identity_type'=>$identity_response->identity_type,
 					'country'=>$identity_response->country,
 					'first_name'=>$identity_response->first_name,
 					'last_name'=>$identity_response->last_name,
-					'date_of_birth'=>$identity_response->date_of_birth
+					'date_of_birth'=>$identity_response->date_of_birth,
+					'is_verified'=>$identity_response->is_identity_validated
 			);
 			$wpdb->insert('IDV_verified_users',$store_user);
-		}
+		
 		include("thankyou.php");
 		exit;
 	}
