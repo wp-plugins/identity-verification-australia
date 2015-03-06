@@ -227,14 +227,14 @@ $(".identity_type").change(function(){
         postdata="first_name="+$("#first_name").val()+"&last_name="+$("#last_name").val()+"&date_of_birth="+dob+"&country="+$("#country").val()+"&passport_number="+$("#p_no").val()+"&passport_placeof_birth="+$("#pob").val()+"&passport_birth_country_name="+$("#passport_birth_country").val()+"&surname_atbirth="+$("#p_sab").val()+"&firstname_atcitizenship="+$("#p_fac").val()+"&surname_atcitizenship="+$("#p_sac").val()+"&identity_type=passport";
       }
       $(".loader_image").css("display","block");
-      $(".row-fluid").css("opacity",'0.5');
+      $("body").css("opacity",'0.5');
       $.ajax({
           url:site_url+'/wp-admin/admin-ajax.php?action=verify_identity',
           type:'post',
           data:postdata,
           success:function(result){
               $(".loader_image").css("display","none");
-              $(".row-fluid").css("opacity",'1');
+              $("body").css("opacity",'1');
               //result=result.replace('0', '');
               $(".result").html(result);
 
