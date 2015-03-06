@@ -4,7 +4,7 @@ $(document).ready(function(){
   var pathArray = window.location.pathname.split( '/' );
   var secondLevelLocation = pathArray[1];
 
-  var site_url='http://'+window.location.hostname+"/";
+  var site_url='http://'+window.location.hostname
   
 $(".identity_type").change(function(){
       if($(this).val()=='driver_license'){
