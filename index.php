@@ -29,9 +29,8 @@
 		      driver_license_number VARCHAR(100),
 		      driver_license_state VARCHAR(100),
 		      rta_card_number VARCHAR(100),
-		      date_of_expiry varchar(50),
-		      is_verified VARCHAR(10),
-		      updated_date VARCHAR(50)
+		      date_of_expiry varchar(50)
+
 		    );";
 		    //reference to upgrade.php file
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -50,7 +49,8 @@
 		      driver_license_state VARCHAR(100),
 		      rta_card_number VARCHAR(100),
 		      date_of_expiry varchar(50),
-		      is_verified varchar(50)
+		      is_verified varchar(50),
+		      updated_date VARCHAR(50)
 		    );";
 		    //reference to upgrade.php file
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
