@@ -17,7 +17,7 @@ $table_name = $wpdb->prefix . "identity_verification_auth";
 			if($response->status=='Invalid'){
 			?>
 				<div style="padding:10px;marign-bottom:5px;">
-					<h3>API Credentials are not Valid.Please Contact your site Adminstrator.</h3>
+					<h3><?php echo $response->message?></h3>
 				</div>
 			<?php
 			}if($response->status=='valid'){
