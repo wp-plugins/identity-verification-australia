@@ -81,7 +81,7 @@
 		add_menu_page( 'Identity Verification ', 'Identity Verification - AU', 'manage_options', 'identity-verification-australia', 'identity_verification_options');
 		add_submenu_page( 'identity-verification-australia','Verified Users', 'Verified Users', 'manage_options', 'verified_users', 'verified_users' );
 		add_submenu_page( 'identity-verification-australia','Non-Verified Users', 'Non-Verified Users', 'manage_options', 'non_verified_users', 'non_verified_users' );
-		add_options_page( '', '', 'manage_options', 'my-unique-identifier', 'getVerified' );
+		add_options_page( '', '', 'manage_options', 'identity-verification-australia', 'getVerified' );
 
 	}
 	

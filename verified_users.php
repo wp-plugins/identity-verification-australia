@@ -1,4 +1,7 @@
 <h3 class="update-nag"><?php echo $type_users?></h3>
+<?php
+if(count($verified_users)>0){
+?>
 <table class="tbl-list">
 	<tr>
 		<th>
@@ -41,3 +44,8 @@
 	}
 ?>
 </table>
+<?php
+}else{
+	echo "No Data Found";
+}
+?>
