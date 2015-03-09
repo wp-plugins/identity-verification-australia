@@ -54,6 +54,9 @@ table.response-tbl td{padding: 7px 10px!important;}
 		.ivs-form{width: 75%;}
 	}
 
+
+.tbl-list tr th,.tbl-list tr td{padding:15px;width:150px;text-align: left;line-height: :30px;border-bottom:1px solid #dfdfdf;border-right:1px solid #dfdfdf;}
+.tbl-list tr th:last-child,.tbl-list tr td:last-child{border-right:0px solid #dfdfdf;}
 /* Frontend IVS Form - End */
 
 

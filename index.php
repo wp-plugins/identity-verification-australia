@@ -47,7 +47,9 @@
 		      driver_license_number VARCHAR(100),
 		      driver_license_state VARCHAR(100),
 		      rta_card_number VARCHAR(100),
-		      date_of_expiry varchar(50)
+		      date_of_expiry varchar(50),
+		      is_verified varchar(50),
+		      updated_date VARCHAR(50)
 		    );";
 		    //reference to upgrade.php file
 		    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -65,7 +67,7 @@
 		$table_name = $wpdb->prefix . "identity_verification_auth";
 		$sql = "DROP TABLE ".$table_name;
 		$e = $wpdb->query($sql);
-		
+		$wpdb->query("DROP TABLE IF EXISTS IDV_verified_users");
 
 	}
 	register_deactivation_hook( __FILE__, 'identity_verification_deactivate' );
@@ -76,10 +78,12 @@
 
 	
 	function identity_verification_menu() {
-		add_menu_page( 'Identity Verification ', 'Identity Verification - AU', 'manage_options', 'my-unique-identifier', 'identity_verification_options' );
-		add_options_page( '', '', 'manage_options', 'my-unique-identifier', 'getVerified' );
+		add_menu_page( 'Identity Verification ', 'Identity Verification - AU', 'manage_options', 'identity-verification-australia', 'identity_verification_options');
+		add_options_page( '', '', 'manage_options', 'identity-verification-australia', 'getVerified' );
 
 	}
+	
+
 	
 
 	// Function which will be called on Click of Left Side Menu
@@ -173,16 +177,18 @@
 		$redirect_url=$api_credentials[0]->redirect_url;
 		$error_url=$api_credentials[0]->error_url;
 		
-		if($identity_response->is_identity_validated==1){
+		
 			$store_user=array(
 					'identity_type'=>$identity_response->identity_type,
 					'country'=>$identity_response->country,
 					'first_name'=>$identity_response->first_name,
 					'last_name'=>$identity_response->last_name,
-					'date_of_birth'=>$identity_response->date_of_birth
+					'date_of_birth'=>$identity_response->date_of_birth,
+					'is_verified'=>($identity_response->is_identity_validated==1?'1':0),
+					'updated_date'=>date("Y-m-d H:i:s")
 			);
 			$wpdb->insert('IDV_verified_users',$store_user);
-		}
+		
 		include("thankyou.php");
 		exit;
 	}
