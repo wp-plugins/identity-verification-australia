@@ -46,6 +46,6 @@ if(count($verified_users)>0){
 </table>
 <?php
 }else{
-	echo "No Data Found";
+	echo "<br/>No Data Found";
 }
 ?>
