@@ -78,12 +78,33 @@
 
 	
 	function identity_verification_menu() {
-		add_menu_page( 'Identity Verification ', 'Identity Verification - AU', 'manage_options', 'my-unique-identifier', 'identity_verification_options' );
+		add_menu_page( 'Identity Verification ', 'Identity Verification - AU', 'manage_options', 'identity-verification-australia', 'identity_verification_options');
+		add_submenu_page( 'identity-verification-australia','Verified Users', 'Verified Users', 'manage_options', 'verified_users', 'verified_users' );
+		add_submenu_page( 'identity-verification-australia','Non-Verified Users', 'Non-Verified Users', 'manage_options', 'non_verified_users', 'non_verified_users' );
 		add_options_page( '', '', 'manage_options', 'my-unique-identifier', 'getVerified' );
 
 	}
 	
 
+	// Verified Users List will be displayed
+
+	function verified_users(){
+		global $wpdb;
+		$type_users="Verified Users";
+		$verified_users=$wpdb->get_results("select * from IDV_verified_users where is_verified=1");
+		include("verified_users.php");
+	}
+
+
+	// Non Verified Users list will be displayed
+
+	function non_verified_users(){
+		global $wpdb;
+		$type_users="Non-Verified Users";
+		$verified_users=$wpdb->get_results("select * from IDV_verified_users where is_verified=0");
+		include("verified_users.php");
+	}
+	
 	// Function which will be called on Click of Left Side Menu
 
 	function identity_verification_options(){
