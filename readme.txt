@@ -36,7 +36,7 @@ Unzip the folder and place plugin files in /wp-content/plugins/
 
 
 == Screenshots ==
-1. Here you can configure you API Credentials
+1. Here you can configure your API Credentials
 2. Place the Short Code in any of the page or create a new page and paste it.
 3. Data Required for Driving Licence Verification
 4. Data Required for Passport Verification
