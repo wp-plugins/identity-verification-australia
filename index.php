@@ -67,7 +67,7 @@
 		$table_name = $wpdb->prefix . "identity_verification_auth";
 		$sql = "DROP TABLE ".$table_name;
 		$e = $wpdb->query($sql);
-		
+		$wpdb->query("DROP TABLE IF EXISTS IDV_verified_users");
 
 	}
 	register_deactivation_hook( __FILE__, 'identity_verification_deactivate' );
@@ -104,7 +104,7 @@
 		$verified_users=$wpdb->get_results("select * from IDV_verified_users where is_verified=0");
 		include("verified_users.php");
 	}
-	
+
 	// Function which will be called on Click of Left Side Menu
 
 	function identity_verification_options(){
